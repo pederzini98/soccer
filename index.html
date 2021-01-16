@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torneio de Futebol</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</head>
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    h1 {
+        font-size: 80px;
+        color: white;
+    }
+
+    #Container {
+        flex: 1;
+        background-color: green;
+        background-image: linear-gradient(to top, rgba(37, 112, 18, 0.089), rgb(138, 221, 163));
+    }
+
+    .Header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-image: url('https://images.pexels.com/photos/58461/pexels-photo-58461.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    #Header_content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        background: rgba(17, 19, 18, 0.534);
+        width: 100%;
+    }
+
+    #Text_Input_Container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    #Clubs_Lists {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #Text_Area {
+        max-width: 90%;
+        border: solid 2px black;
+        resize: none;
+        scroll-behavior: unset;
+        overflow: hidden;
+        box-shadow: 2px 2px 10px 2px black;
+    }
+
+    #Matches_Container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .Matches_Text_Area {
+        border: solid 2px black;
+        resize: none;
+        scroll-behavior: unset;
+        overflow: hidden;
+        box-shadow: 2px 2px 10px 2px black;
+    }
+
+    #Champion {
+        display: none;
+        text-align: center;
+        flex-direction: column;
+        border: solid 2px black;
+        margin-top: 20px;
+        background-image: url('https://images.unsplash.com/photo-1551384732-fb4f003640e4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+    .button_start {
+        width: 22.1%;
+        height: 40px;
+        border-radius: 5%;
+        box-shadow: 2px 2px 10px 2px black;
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        font-size: 100%;
+    }
+
+    footer {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 60px;
+        background-color: black;
+        text-align: center;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    th {
+        padding: 18px;
+
+    }
+
+    td {
+        padding: 18px;
+        border: none;
+    }
+
+    tr:nth-child(even) {
+        background-color: rgb(8, 121, 42)
+    }
+</style>
+
+<body>
+
+    <div id="Container">
+        <header class="Header">
+            <div id='Header_content'>
+                <h1>Desafio Estágio - 2021</h1>
+                <h2 style="font-size:50px;color: white">Torneio de Futebol</h2>
+            </div>
+        </header>
+
+        <div id="Text_Input_Container">
+            <div id="Clubs_Lists">
+                <h2>Lista de Times</h2>
+                <textarea id="Text_Area" name="description" rows="25" cols="29"></textarea>
+            </div>
+        </div>
+        <div class="Matches"
+            style=" display: flex; flex-direction: row; justify-content: space-around; flex-wrap: wrap;">
+            <div id="Matches_Container">
+                <h2>Jogos de Ida</h2>
+
+                <table class="Matches_Text_Area">
+                    <thead class="TableeHeader">
+                        <tr class="TableeHeaderRow">
+                            <th>Mandante</th>
+                            <th>Resultado</th>
+                            <th>Visitante</th>
+                            <th>Local</th>
+                            <th>Rodada</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="Matches_Container">
+                <h2>Jogos de volta</h2>
+
+                <table class="Matches_Text_Area">
+                    <thead class="TableeHeader">
+                        <tr class="TableeHeaderRow">
+                            <th>Mandante</th>
+                            <th>Resultado</th>
+                            <th>Visitante</th>
+                            <th>Local</th>
+                            <th>Rodada</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody2">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="Champion">
+            <h2>Time Campeão: São Paulo</h2>
+            <h3>Pontos: 150</h3>
+            <h3 id="teste">Número de vitórias: 38</h3>
+
+        </div>
+        <div class="button-container">
+            <button class="button_start">Iniciar Campeonato</button>
+        </div>
+
+        <footer>
+            <h4 style="color: white;">Desenvolvido Por Lucas Pederzini Silva</h4>
+        </footer>
+        <script>
+
+            var Campeonato_dados = new Array()
+            var controlado = new Array()
+            $(document).ready(function () {
+                $("button").click(function () {
+                    var texto = $("#Text_Area").val()
+                    var stringDeDados = texto.split("\n")
+
+                    stringDeDados.forEach(element => {
+                        var auxiliar = element.toString()
+                        var dadosDosTime = auxiliar.split(";")
+
+
+                        Campeonato_dados.push({ 'Nome': dadosDosTime[0], "Estado": dadosDosTime[1], "Pontos": 0, "Vitorias": 0 })
+
+                    });
+                    Numero_de_Partidas(Campeonato_dados)
+                    Schedule(Campeonato_dados)
+                });
+            });
+
+
+
+            function DefineMandante(index) {
+
+                var mandante = new Array()
+                var visitante = new Array()
+                var x = new Array()
+
+
+                for (var i = 0; i < Campeonato_dados.length; i++) {
+                    if (i < Campeonato_dados.length / 2) {
+                        mandante.push({
+                            'Mandante': Campeonato_dados[i].Nome,
+                            'Local': Campeonato_dados[i].Estado,
+                            
+                        })
+                        const auxiliar = mandante[0].va
+                    } else {
+                        visitante.push({
+                            'Visitante': Campeonato_dados[i].Nome,
+                            'Local': Campeonato_dados[i].Estado
+                        })
+                    }
+                }
+                function random(o) {
+                    for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+                    return o;                
+                    }
+                
+
+                
+                // function hasDuplicates(array) {
+                //     return (new Set(array)).size !== array.length;
+                // }
+                // while(x == 0){
+                //     if(hasDuplicates(mandante.Mandante) === true){
+                //         random(mandante)
+
+                //     }else{
+                //         x = 1
+                //     }
+                // }
+                return [random(mandante), visitante]
+            }
+
+            function Numero_de_Partidas(data) {
+                var f1 = 1
+                var f2 = 1
+                for (var i = data.length; i > 0; i--) {
+                    f1 = f1 * i
+                }
+                for (var i = data.length - 2; i > 0; i--) {
+                    f2 = f2 * i
+                }
+
+                return Math.floor(2 * ((f1 / (f2 * 2))))
+
+            }
+
+            function Schedule() {
+                var times = new Array()
+               
+
+                var table = document.getElementById('tableBody')
+                var table2 = document.getElementById('tableBody2')
+
+
+                for (var i = 0; i < 19; i++) {
+
+                    times = DefineMandante(i)
+                    for (var j = 0; j < 10; j++) {
+
+                        console.log(times[0][j])
+                        var resultado_mandante = Math.floor(Math.random() * 10)
+                        var resultado_visitante = Math.floor(Math.random() * 10)
+                        var row = `<tr>
+                            <td>${times[0][j].Mandante}</td>
+                            <td>${resultado_mandante + ' vs ' + resultado_visitante}</td>
+                            <td>${times[1][j].Visitante}</td>
+                            <td>${times[0][j].Local}</td>
+                            <td>${i}</td>
+                            </tr>`
+                        table.innerHTML += row
+
+                        var resultado_mandante2 = Math.floor(Math.random() * 10)
+                        var resultado_visitante2 = Math.floor(Math.random() * 10)
+                        var row = `<tr>
+                            <td>${times[1][j].Visitante}</td>
+                            <td>${resultado_mandante2 + ' vs ' + resultado_visitante2}</td>
+                            <td>${times[0][j].Mandante}</td>
+                            <td>${times[1][j].Local}</td>
+                            <td>${i}</td>
+                            </tr>`
+                        table2.innerHTML += row
+                    }
+
+                }
+            }
+        </script>
+</body>
+
+</html>
