@@ -6,7 +6,7 @@ var nRodadas = 0
 $(document).ready(function () {
     $(".button_start").click(function () {
         var texto = $("#Text_Area").val()
-        var stringDeDados = texto.split("\n")
+        var stringDeDados = texto.trim().split("\n")
 
         stringDeDados.forEach(element => {
             var auxiliar = element.toString()
@@ -14,13 +14,13 @@ $(document).ready(function () {
 
 
             Campeonato_dados.push({ 'Nome': dadosDosTime[0], "Estado": dadosDosTime[1], "Pontos": 0 })
-
         });
         nRodadas = (Numero_de_Partidas(Campeonato_dados))
         Schedule()
         Campeão()
         $(".button_start").hide()
         $("#button-container2").css("display", "flex")
+        $("#Champion").css("display", "flex")
     });
     $(".button_start2").click(function () {
         document.location.reload()
@@ -83,8 +83,8 @@ function Schedule() {
         times = DefineMandante(i)
         for (var j = 0; j < (Campeonato_dados.length / 2); j++) {
 
-            var resultado_mandante = Math.floor(Math.random() * 10)
-            var resultado_visitante = Math.floor(Math.random() * 10)
+            var resultado_mandante = Math.floor(Math.random() * 5)
+            var resultado_visitante = Math.floor(Math.random() * 3)
 
             if (resultado_mandante > resultado_visitante) {
                 Campeonato_dados.forEach(element => {
@@ -120,7 +120,7 @@ function Schedule() {
                 var auxiliar1 = new Array()
                 var auxiliar2 = new Array()
 
-                for (var y = 0; y < tim[1].length; y++){
+                for (var y = 0; y < tim[1].length; y++) {
                     auxiliar1.push(tim[0][y].Local)
                     auxiliar2.push(tim[1][y].Local)
                 }
@@ -132,28 +132,28 @@ function Schedule() {
                             teste++
                     }
 
-                    if (teste == 2) 
-                        RodadaDuplaIda.push(t1)                             
-                    else if (teste > 2) 
-                        RodadaDuplaIda.push(t2)                               
-                    else 
-                        RodadaDuplaIda.push('')                               
-                },
-                tim[1].forEach(function (valor, indice) {
-                    var teste = 0
-                    var aux = tim[1][indice].Local
-                    for (var l = 0; l < tim[0].length; l++) {
-                        if (aux == auxiliar2[l])
-                            teste++
-                    }
                     if (teste == 2)
-                        RodadaDuplaVolta.push(t1)
-                    else if (teste > 2) 
-                        RodadaDuplaVolta.push(t2)
-                    else 
-                        RodadaDuplaVolta.push('')
-                }
-                ))
+                        RodadaDuplaIda.push(t1)
+                    else if (teste > 2)
+                        RodadaDuplaIda.push(t2)
+                    else
+                        RodadaDuplaIda.push('')
+                },
+                    tim[1].forEach(function (valor, indice) {
+                        var teste = 0
+                        var aux = tim[1][indice].Local
+                        for (var l = 0; l < tim[0].length; l++) {
+                            if (aux == auxiliar2[l])
+                                teste++
+                        }
+                        if (teste == 2)
+                            RodadaDuplaVolta.push(t1)
+                        else if (teste > 2)
+                            RodadaDuplaVolta.push(t2)
+                        else
+                            RodadaDuplaVolta.push('')
+                    }
+                    ))
             }
             RodadasDuplas(times)
 
@@ -165,9 +165,9 @@ function Schedule() {
                 <td>${i + 1} ${RodadaDuplaIda[j]}</td>
                 </tr>`
             table.innerHTML += row
-                RodadaDuplaIda.splice(0, RodadaDuplaIda.length)
-            var resultado_mandante2 = Math.floor(Math.random() * 10)
-            var resultado_visitante2 = Math.floor(Math.random() * 10)
+            RodadaDuplaIda.splice(0, RodadaDuplaIda.length)
+            var resultado_mandante2 = Math.floor(Math.random() * 5)
+            var resultado_visitante2 = Math.floor(Math.random() * 3)
 
             if (resultado_mandante2 > resultado_visitante2) {
                 Campeonato_dados.forEach(element => {
