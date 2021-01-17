@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="app.js"></script>
 
 </head>
 <style>
@@ -104,7 +104,24 @@
         margin-top: 50px;
     }
 
+    #button-container2 {
+        display: none;
+        justify-content: center;
+        margin-top: 50px;
+    }
+
     .button_start {
+        width: 22.1%;
+        height: 40px;
+        border-radius: 5%;
+        box-shadow: 2px 2px 10px 2px black;
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        font-size: 100%;
+    }
+
+    .button_start2 {
         width: 22.1%;
         height: 40px;
         border-radius: 5%;
@@ -204,204 +221,15 @@
 
         </div>
         <div class="button-container">
-            <button class="button_start">Iniciar Campeonato</button>
+            <button name='b1' class="button_start">Iniciar Campeonato</button>
         </div>
-
+        <div id="button-container2">
+            <button class="button_start2">Reiniciar Campeonato</button>
+        </div>
         <footer>
             <h4 style="color: white;">Desenvolvido Por Lucas Pederzini Silva</h4>
         </footer>
-        <script>
-
-            var Campeonato_dados = new Array()
-            var controlado = new Array()
-            $(document).ready(function () {
-                $("button").click(function () {
-                    var texto = $("#Text_Area").val()
-                    var stringDeDados = texto.split("\n")
-
-                    stringDeDados.forEach(element => {
-                        var auxiliar = element.toString()
-                        var dadosDosTime = auxiliar.split(";")
-
-
-                        Campeonato_dados.push({ 'Nome': dadosDosTime[0], "Estado": dadosDosTime[1], "Pontos": 0, "Vitorias": 0 })
-
-                    });
-                    Numero_de_Partidas(Campeonato_dados)
-                    Schedule()
-                    Campeão()
-                });
-            });
-
-
-
-            function DefineMandante(index) {
-
-                var mandante = new Array()
-                var visitante = new Array()
-                var x = new Array()
-
-
-                for (var i = 0; i < Campeonato_dados.length; i++) {
-                    if (i < Campeonato_dados.length / 2) {
-                        mandante.push({
-                            'Mandante': Campeonato_dados[i].Nome,
-                            'Local': Campeonato_dados[i].Estado,
-
-                        })
-                        const auxiliar = mandante[0].va
-                    } else {
-                        visitante.push({
-                            'Visitante': Campeonato_dados[i].Nome,
-                            'Local': Campeonato_dados[i].Estado
-                        })
-                    }
-                }
-                function random(o) {
-                    for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-                    return o;
-                }
-
-
-
-                return [random(mandante), visitante]
-            }
-
-            function Numero_de_Partidas(data) {
-                var f1 = 1
-                var f2 = 1
-                for (var i = data.length; i > 0; i--) {
-                    f1 = f1 * i
-                }
-                for (var i = data.length - 2; i > 0; i--) {
-                    f2 = f2 * i
-                }
-
-                return Math.floor(2 * ((f1 / (f2 * 2))))
-
-            }
-
-            function Schedule() {
-                var times = new Array()
-
-
-                var table = document.getElementById('tableBody')
-                var table2 = document.getElementById('tableBody2')
-
-
-                for (var i = 0; i < 19; i++) {
-
-                    times = DefineMandante(i)
-                    for (var j = 0; j < 10; j++) {
-
-                        var resultado_mandante = Math.floor(Math.random() * 10)
-                        var resultado_visitante = Math.floor(Math.random() * 10)
-
-                        if (resultado_mandante > resultado_visitante) {
-                            Campeonato_dados.forEach(element => {
-                                if (element.Nome == times[0][j].Mandante) {
-                                    element.Pontos += 3
-                                }
-                            })
-                        }
-                        else if (resultado_mandante < resultado_visitante) {
-                            Campeonato_dados.forEach(element => {
-                                if (element.Nome == times[1][j].Visitante) {
-                                    element.Pontos += 3
-                                }
-                            })
-                        }
-                        else if (resultado_mandante == resultado_visitante) {
-
-                            Campeonato_dados.forEach(element => {
-                                if (element.Nome == times[0][j].Mandante) {
-                                    element.Pontos += 1
-                                }
-                            })
-                            Campeonato_dados.forEach(element => {
-                                if (element.Nome == times[1][j].Visitante) {
-                                    element.Pontos += 1
-                                }
-                            })
-
-                        }
-                        var row = `<tr>
-                            <td>${times[0][j].Mandante}</td>
-                            <td>${resultado_mandante + ' vs ' + resultado_visitante}</td>
-                            <td>${times[1][j].Visitante}</td>
-                            <td>${times[0][j].Local}</td>
-                            <td>${i}</td>
-                            </tr>`
-                        table.innerHTML += row
-
-                        var resultado_mandante2 = Math.floor(Math.random() * 10)
-                        var resultado_visitante2 = Math.floor(Math.random() * 10)
-
-                        if (resultado_mandante2 > resultado_visitante2) {
-                            Campeonato_dados.forEach(element => {
-                                if (element.Nome == times[1][j].Visitante) {
-                                    element.Pontos += 3
-                                }
-                            })
-                        }
-                        else if (resultado_mandante2 < resultado_visitante2) {
-                            Campeonato_dados.forEach(element => {
-                                if (element.Nome == times[0][j].Mandante) {
-                                    element.Pontos += 3
-                                }
-                            })
-                        }
-                        else if (resultado_mandante2 == resultado_visitante2) {
-
-                            Campeonato_dados.forEach(element => {
-                                if (element.Nome == times[0][j].Mandante) {
-                                    element.Pontos += 1
-                                }
-                            })
-                            Campeonato_dados.forEach(element => {
-                                if (element.Nome == times[1][j].Visitante) {
-                                    element.Pontos += 1
-                                }
-                            })
-
-                        }
-                        var row2 = `<tr>
-                            <td>${times[1][j].Visitante}</td>
-                            <td>${resultado_mandante2 + ' vs ' + resultado_visitante2}</td>
-                            <td>${times[0][j].Mandante}</td>
-                            <td>${times[1][j].Local}</td>
-                            <td>${i}</td>
-                            </tr>`
-                        table2.innerHTML += row2
-                    }
-
-                }
-                console.log(Campeonato_dados)
-            }
-            function Campeão() {
-                var table = document.getElementById('Champion')
-
-                var campeao = {
-                    'Nome': 'teste',
-                    'Pontos': 0
-                }
-                Campeonato_dados.forEach(element => {
-                    var auxiliar = element.Pontos
-
-                    if (auxiliar > campeao.Pontos) {
-                        campeao.Nome = element.Nome,
-                            campeao.Pontos = auxiliar
-                    }
-
-                });
-                console.log(campeao)
-                var row = `
-                            <h2>Time Campeão: ${campeao.Nome}</h2>
-                            <h3>Pontos: ${campeao.Pontos}</h3>
-                            `
-                table.innerHTML += row
-            }
-        </script>
+      
 </body>
 
 </html>
