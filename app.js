@@ -14,7 +14,13 @@ $(document).ready(function () {
 
 
             Campeonato_dados.push({ 'Nome': dadosDosTime[0], "Estado": dadosDosTime[1], "Pontos": 0 })
+
         });
+        if ((Campeonato_dados.length % 2) == 1) {
+            alert("Voce deve digitar um número par de times")
+            document.location.reload()
+        }
+        console.log(Campeonato_dados)
         nRodadas = (Numero_de_Partidas(Campeonato_dados))
         Schedule()
         Campeão()
@@ -220,23 +226,44 @@ function Campeão() {
     var table = document.getElementById('Champion')
 
     var campeao = {
-        'Nome': 'teste',
+        'Nome': 'x',
         'Pontos': 0,
+        'Empate': {
+            'Nome': 'x',
+            'Pontos': 0
+        }
 
     }
     Campeonato_dados.forEach(element => {
         var auxiliar = element.Pontos
 
+
         if (auxiliar > campeao.Pontos) {
             campeao.Nome = element.Nome,
                 campeao.Pontos = auxiliar
         }
+        else if(auxiliar == campeao.Pontos) {
+            campeao.Empate.Nome = element.Nome
+            campeao.Empate.Pontos = auxiliar
 
+        }
+        
     });
-    // console.log(campeao)
+    
+    if(campeao.Pontos == campeao.Empate.Pontos){
+        var row = `
+                    <h2>Empate: ${campeao.Empate.Nome}, ${campeao.Nome}</h2>
+                    <h3>Pontos: ${campeao.Empate.Pontos}</h3>
+                    `
+        table.innerHTML += row
+
+    }
+    else{
     var row = `
-                <h2>Time Campeão: ${campeao.Nome}</h2>
-                <h3>Pontos: ${campeao.Pontos}</h3>
-                `
+                        <h2>Time Campeão: ${campeao.Nome}</h2>
+                        <h3>Pontos: ${campeao.Pontos}</h3>
+                        `
     table.innerHTML += row
+    }
+    // console.log(campeao)
 }
