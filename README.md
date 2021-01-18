@@ -10,6 +10,13 @@ The system was compose by the following Rules:
    
   
   ## Initial Screen
-  
+  ![Captura de tela de 2021-01-18 10-34-38](https://user-images.githubusercontent.com/48737620/104922442-80b20f80-5979-11eb-9f9b-ced0afd956ef.png)
+
   
   ## Main and Tables
+![Captura de tela de 2021-01-18 10-40-39](https://user-images.githubusercontent.com/48737620/104922685-ce2e7c80-5979-11eb-912a-a79b63cd91cb.png)
+
+![Captura de tela de 2021-01-18 10-41-21](https://user-images.githubusercontent.com/48737620/104922682-ccfd4f80-5979-11eb-9d3c-557937530d16.png)
+
+
+![Captura de tela de 2021-01-18 10-41-35](https://user-images.githubusercontent.com/48737620/104922677-cbcc2280-5979-11eb-9017-dda6c880ce55.png)
