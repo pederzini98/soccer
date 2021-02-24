@@ -33,7 +33,7 @@
         text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
     }
 
-    #Container {
+    #container {
         flex: 1;
         background-image: url('https://images.unsplash.com/photo-1502836050073-c79f265d3ca5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1303&q=80');
         background-position: center;
@@ -45,7 +45,7 @@
     }
     
 
-    .Header {
+    .header {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -57,7 +57,7 @@
 
     }
 
-    #Header_content {
+    #header-content {
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -66,21 +66,21 @@
         width: 100%;
     }
 
-    #Text_Input_Container {
+    #text-input-container {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         flex-wrap: wrap;
     }
 
-    #Clubs_Lists {
+    #clubs-list {
         display: flex;
         align-items: center;
         flex-direction: column;
         text-align: center;
     }
 
-    #Text_Area {
+    #text-area {
         max-width: 100%;
         border: solid 2px black;
         resize: none;
@@ -89,14 +89,14 @@
         box-shadow: 2px 2px 10px 2px black;
     }
 
-    #Matches_Container {
+    #matches-container {
         display: flex;
         align-items: center;
         flex-direction: column;
         text-align: center;
     }
 
-    .Matches_Text_Area {
+    .matches-text-area {
         border: solid 2px black;
         resize: none;
         scroll-behavior: unset;
@@ -104,7 +104,7 @@
         box-shadow: 2px 2px 10px 2px black;
     }
 
-    #Champion {
+    #champion {
         display: none;
         text-align: center;
         flex-direction: column;
@@ -128,7 +128,7 @@
         margin-top: 50px;
     }
 
-    .button_start {
+    .button-start {
         width: 22.1%;
         height: 40px;
         border-radius: 5%;
@@ -139,7 +139,7 @@
         font-size: 100%;
     }
 
-    .button_start2 {
+    .button-start2 {
         width: 22.1%;
         height: 40px;
         border-radius: 5%;
@@ -164,18 +164,18 @@
         border-collapse: collapse;
     }
 
-    .TableeHeaderRow {
+    .table-row {
         background-color: black;
         color: white;
         font-weight: bold;
     }
 
-    #tableBody {
+    #table-body {
         background-color: rgb(16, 16, 17);
         color: white;
     }
 
-    #tableBody2 {
+    #table-body2 {
         background-color: rgb(16, 16, 17);
         color: white;
     }
@@ -198,31 +198,31 @@
 </style>
 
 <body>
-    <div id="Container">
-        <header class="Header">
-            <div id='Header_content'>
+    <div id="container">
+        <header class="header">
+            <div id='header-content'>
                 <h1>Desafio Estágio - 2021</h1>
                 <h1 style="font-size:50px;color: white">Torneio de Futebol</h2>
             </div>
         </header>
-            <div id="Text_Input_Container">
-                <div id="Clubs_Lists">
+            <div id="text-input-container">
+                <div id="clubs-list">
                     <h2>Lista de Times</h2>
-                    <textarea id="Text_Area" name="description" rows="25" cols="29"></textarea>
+                    <textarea id="text-area" name="description" rows="25" cols="29"></textarea>
                 </div>
             </div>
-            <div id="Champion">
+            <div id="champion">
 
 
             </div>
-            <div class="Matches"
+            <div class="matches"
                 style=" display: flex; flex-direction: row; justify-content: space-around; flex-wrap: wrap;">
-                <div id="Matches_Container">
+                <div id="matches-container">
                     <h2>Jogos de Ida</h2>
 
-                    <table class="Matches_Text_Area">
-                        <thead class="TableeHeader">
-                            <tr class="TableeHeaderRow">
+                    <table class="matches-text-area">
+                        <thead class="table">
+                            <tr class="table-row">
                                 <th>Mandante</th>
                                 <th>Resultado</th>
                                 <th>Visitante</th>
@@ -230,17 +230,17 @@
                                 <th>Rodada</th>
                             </tr>
                         </thead>
-                        <tbody id="tableBody">
+                        <tbody id="table-body">
 
                         </tbody>
                     </table>
                 </div>
-                <div id="Matches_Container">
+                <div id="matches-container">
                     <h2>Jogos de volta</h2>
 
-                    <table class="Matches_Text_Area">
-                        <thead class="TableeHeader">
-                            <tr class="TableeHeaderRow">
+                    <table class="matches-text-area">
+                        <thead class="table">
+                            <tr class="table-row">
                                 <th>Mandante</th>
                                 <th>Resultado</th>
                                 <th>Visitante</th>
@@ -248,17 +248,17 @@
                                 <th>Rodada</th>
                             </tr>
                         </thead>
-                        <tbody id="tableBody2">
+                        <tbody id="table-body2">
 
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="button-container">
-                <button name='b1' class="button_start">Iniciar Campeonato</button>
+                <button name='b1' class="button-start">Iniciar Campeonato</button>
             </div>
             <div id="button-container2">
-                <button class="button_start2">Reiniciar Campeonato</button>
+                <button class="button-start2">Reiniciar Campeonato</button>
             </div>
         <footer>
             <h4 style="color: white;">Desenvolvido Por Lucas Pederzini Silva</h4>

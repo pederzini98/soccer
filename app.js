@@ -4,8 +4,8 @@ var RodadaDuplaVolta = new Array()
 
 var nRodadas = 0
 $(document).ready(function () {
-    $(".button_start").click(function () {
-        var texto = $("#Text_Area").val()
+    $(".button-start").click(function () {
+        var texto = $("#text-area").val()
         var stringDeDados = texto.trim().split("\n")
 
         stringDeDados.forEach(element => {
@@ -24,16 +24,16 @@ $(document).ready(function () {
         nRodadas = (Numero_de_Partidas(Campeonato_dados))
         Schedule()
         Campeão()
-        $(".button_start").hide()
+        $(".button-start").hide()
         $("#button-container2").css("display", "flex")
-        $("#Champion").css("display", "flex")
+        $("#champion").css("display", "flex")
     });
-    $(".button_start2").click(function () {
+    $(".button-start2").click(function () {
         document.location.reload()
     })
 });
 
-function DefineMandante(index) {
+function DefineMandante() {
 
     var mandante = new Array()
     var visitante = new Array()
@@ -80,13 +80,13 @@ function Schedule() {
     var times = new Array()
 
 
-    var table = document.getElementById('tableBody')
-    var table2 = document.getElementById('tableBody2')
+    var table = document.getElementById('table-body')
+    var table2 = document.getElementById('table-body2')
 
 
     for (var i = 0; i < nRodadas; i++) {
 
-        times = DefineMandante(i)
+        times = DefineMandante()
         for (var j = 0; j < (Campeonato_dados.length / 2); j++) {
 
             var resultado_mandante = Math.floor(Math.random() * 5)
@@ -223,7 +223,7 @@ function Schedule() {
 
 
 function Campeão() {
-    var table = document.getElementById('Champion')
+    var table = document.getElementById('champion')
 
     var campeao = {
         'Nome': 'x',
